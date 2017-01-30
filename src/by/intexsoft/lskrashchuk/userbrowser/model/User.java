@@ -1,9 +1,8 @@
 package by.intexsoft.lskrashchuk.userbrowser.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-
-import org.springframework.data.domain.Persistable;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
@@ -19,7 +18,7 @@ public class User extends AbstractPersistable<Integer>
 	/**
 	 * User name property
 	 */
-	@Column
+	@Column(name = "name")
 	public String name;
 
 	/**

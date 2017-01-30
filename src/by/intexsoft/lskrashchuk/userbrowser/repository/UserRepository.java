@@ -1,21 +1,10 @@
 package by.intexsoft.lskrashchuk.userbrowser.repository;
 
-import org.springframework.stereotype.Repository;
+import java.util.List;
 
-/**
- * Class for user table access
- * @author lskra
- *
- */
-@Repository
-public class UserRepository
+import by.intexsoft.lskrashchuk.userbrowser.model.User;
+
+public interface UserRepository
 {
-	/**
-	 * Get all users method
-	 * @return all users list
-	 */
-	public List<User> getAll(){
-		Criteria cr = getSession().createCriteria(User);
-		return (List<User>) cr.list();
-	}
+	List<User> getAll();
 }

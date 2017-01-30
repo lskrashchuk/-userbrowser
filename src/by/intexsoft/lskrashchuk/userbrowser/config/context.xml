@@ -16,28 +16,78 @@
 
 	<context:annotation-config />
 
-	<context:component-scan base-package="by.lskrashchuk.training.parking.service.impl" />
-	<context:component-scan base-package="by.lskrashchuk.training.parking.dataaccess.impl" />
+	<context:component-scan base-package="by.intexsoft.lskrashchuk.userbrowser.model" />
+	<context:component-scan	base-package="by.intexsoft.lskrashchuk.userbrowser.service.impl" />
+	<context:component-scan	base-package="by.intexsoft.lskrashchuk.userbrowser.repository.impl" />
 
+
+ 	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>  
+
+	<bean id="placeholderConfig"
+        class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer"
+		p:location="classpath:config.properties" />
 
 	<bean id="dataSource"
-		class="by.lskrashchuk.training.parking.datamodel.util.SchemaNameAwareBasicDataSource"
-		destroy-method="close" 
-		p:driverClassName="org.postgresql.Driver"
-		p:url="jdbc:postgresql://localhost:5432/parking" 
-		p:username="postgres" 
-		p:password="postgres"
-		p:schema="public" />
-		
-		
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		p:driverClassName="${database.driver}"
+		p:url="${database.URL}" 
+		p:username="${database.user}"
+		p:password="${database.password}" />
 
-	<bean id="entityManagerFactory"
+<!-- 		p:url="jdbc:postgresql://localhost:5432/work?currentSchema=test"  -->
+
+<!-- <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/> -->
+
+<!-- <bean id="jpaVendorAdapter" -->
+<!--       class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"> -->
+<!--     <property name="database" value="POSTGRESQL"/> -->
+<!--     <property name="databasePlatform" value="org.hibernate.dialect.PostgreSQL9Dialect"/> -->
+<!-- </bean> -->
+
+
+<!-- <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" -->
+<!--       id="entityManagerFactory"> -->
+<!--     <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml"/> -->
+<!--     <property name="persistenceUnitName" value="developer.remarks.persistence.unit"/> -->
+<!--     <property name="dataSource" ref="dataSource"/> -->
+<!--     <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/> -->
+<!--     <property name="jpaDialect" ref="jpaDialect"/> -->
+<!-- </bean> -->
+
+ 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
 		p:dataSource-ref="dataSource" />
 
- 	<tx:annotation-driven />
 
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
-		p:entityManagerFactory-ref="entityManagerFactory" />
- 
+<!-- 	<bean id="entityManagerFactory" -->
+<!-- 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" -->
+<!-- 		p:packagesToScan="by.intexsoft.lskrashchuk.userbrowser.model" -->
+<!-- 		p:dataSource-ref="dataSource" /> -->
+
+
+
+ 	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan">
+			<list>
+				<value>by.intexsoft.lskrashchuk.userbrowser.model</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				<prop key="hibernate.connection.charSet">UTF-8</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+			</props>
+		</property>
+	</bean>  
+
+
 </beans>
