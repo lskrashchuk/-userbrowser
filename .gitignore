@@ -2,3 +2,7 @@
 *.classpath
 *.project
 *.jar
+userbrowser.war
+webapp/WEB-INF/index.html
+logs/userbrowser.log
+.settings/org.eclipse.jdt.core.prefs

@@ -12,7 +12,7 @@ import by.intexsoft.lskrashchuk.userbrowser.service.impl.UserServiceImpl;
  *
  */
 
-
+//
 
 public class Application
 {
@@ -31,8 +31,6 @@ public class Application
 		{
 			System.out.println(user);
 		}
-//		SessionFactory sessionFactory = (SessionFactory) context.getBean("sessionFactory");
-//		System.out.println(us.findAll());
 	}
 	
 }
