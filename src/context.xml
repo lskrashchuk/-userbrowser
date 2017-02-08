@@ -37,26 +37,6 @@
 		p:username="${database.user}"
 		p:password="${database.password}" />
 
-<!-- 		p:url="jdbc:postgresql://localhost:5432/work?currentSchema=test"  -->
-
-<!-- <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/> -->
-
-<!-- <bean id="jpaVendorAdapter" -->
-<!--       class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"> -->
-<!--     <property name="database" value="POSTGRESQL"/> -->
-<!--     <property name="databasePlatform" value="org.hibernate.dialect.PostgreSQL9Dialect"/> -->
-<!-- </bean> -->
-
-
-<!-- <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" -->
-<!--       id="entityManagerFactory"> -->
-<!--     <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml"/> -->
-<!--     <property name="persistenceUnitName" value="developer.remarks.persistence.unit"/> -->
-<!--     <property name="dataSource" ref="dataSource"/> -->
-<!--     <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/> -->
-<!--     <property name="jpaDialect" ref="jpaDialect"/> -->
-<!-- </bean> -->
-
  	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -65,13 +45,6 @@
         </property>
         <property name="packagesToScan" value="by.intexsoft.lskrashchuk.userbrowser.model"/>
 	</bean>
-
-<!-- 	<bean id="entityManagerFactory" -->
-<!-- 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" -->
-<!-- 		p:packagesToScan="by.intexsoft.lskrashchuk.userbrowser.model" -->
-<!-- 		p:dataSource-ref="dataSource" /> -->
-
-
 
  	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -91,13 +64,4 @@
 		</property>
 	</bean>  
 	
-<!-- 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-       <property name="viewClass"
-            value="org.springframework.web.servlet.view.JstlView" />
-      <property name="prefix" value="/" />
-     <property name="suffix" value=".html" />
-  </bean>
- -->	
-
-
 </beans>

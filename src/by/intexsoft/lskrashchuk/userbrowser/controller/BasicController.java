@@ -1,17 +1,20 @@
 package by.intexsoft.lskrashchuk.userbrowser.controller;
 
-import java.util.List;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import by.intexsoft.lskrashchuk.userbrowser.model.User;
 import by.intexsoft.lskrashchuk.userbrowser.service.UserService;
 
+/**
+ * Basic controller class
+ *
+ */
 @RestController
 public class BasicController
 {
@@ -20,16 +23,24 @@ public class BasicController
 	
 	private static Logger LOGGER = LoggerFactory.getLogger(BasicController.class);
 	
-	@RequestMapping(value = "/hello", method = RequestMethod.GET)
+	/**
+	 * Home page mapping method
+	 * @return hello string
+	 */
+	@RequestMapping("/")
     public String helloWorld() 
     {
 		LOGGER.info("Start hello method");
-		return "Hello, World! Меня написала Лариса";
+		return "Hello, World! Welcome to User Browser!";
     }
 
-	@RequestMapping(value = "/users")
-    public List<User> getAllUsers() 
+	/**
+	 * Users page mapping method
+	 * @return all users list
+	 */
+	@RequestMapping("/users")
+    public String getAllUsers() 
     {
-        return userService.findAll();
+		return userService.findAll().stream().map(User::toString).collect(Collectors.joining("<br>"));
     }
 }

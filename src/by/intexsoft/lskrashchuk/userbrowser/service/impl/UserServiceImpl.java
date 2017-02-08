@@ -11,6 +11,10 @@ import by.intexsoft.lskrashchuk.userbrowser.model.User;
 import by.intexsoft.lskrashchuk.userbrowser.repository.UserRepository;
 import by.intexsoft.lskrashchuk.userbrowser.service.UserService;
 
+/**
+ * User service implementation
+ *
+ */
 @Service
 public class UserServiceImpl implements UserService
 {
@@ -18,7 +22,11 @@ public class UserServiceImpl implements UserService
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
+	/**
+	 * The method finds all users
+	 * @return all users list
+	 */
 	@Override
 	public List<User> findAll()
 	{

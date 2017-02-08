@@ -6,15 +6,16 @@ import javax.persistence.Table;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 /**
- * User model class
+ * User entity class
  * 
- * @author lskra
  *
  */
 @Entity
-@Table(name = "`users`")
+@Table(name = "users")
 public class User extends AbstractPersistable<Integer>
 {
+	private static final long serialVersionUID = 1L;
+	
 	/**
 	 * User name property
 	 */
@@ -22,9 +23,8 @@ public class User extends AbstractPersistable<Integer>
 	public String name;
 
 	/**
-	 * Method for user print
+	 * @return Returns a string representation of the object User.
 	 */
-	@Override
 	public String toString()
 	{
 		return "User: " + name;

@@ -14,7 +14,6 @@ import by.intexsoft.lskrashchuk.userbrowser.repository.UserRepository;
 
 /**
  * Class for user table access
- * @author lskra
  *
  */
 @Repository

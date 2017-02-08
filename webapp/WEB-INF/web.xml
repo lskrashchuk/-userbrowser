@@ -3,17 +3,17 @@
 	version="2.5">
   <display-name>User browser</display-name>
 
- <context-param>
-	<param-name>contextConfigLocation</param-name>
-	<param-value>classpath:context.xml</param-value>
-  </context-param>	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:context.xml</param-value>
+	</context-param>	
    
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
 
-  <servlet>
+  	<servlet>
         <servlet-name>spring</servlet-name>
             <servlet-class>
                 org.springframework.web.servlet.DispatcherServlet
